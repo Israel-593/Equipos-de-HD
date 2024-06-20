@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <%- include('../includes/head') %>
+    <link rel="stylesheet" href="public/css/home.css" />
+  </head>
+  <body>
+    <%- include('../includes/header') %>
+
+    <main class="content-wrapper mt-5" style="margin-top: 80px !important">
+      <div class="container" style="width: 95% !important">
+        <div class="row justify-content-md-center mb-5">
+          <div class="col-md-12 mt-5">
+            <h2 class="text-center">
+              Registro de Mantenimientos de Maquinas de HD y HDF 2024
+              <hr />
+            </h2>
+          </div>
+
+          <div class="col-md-6 mt-5 text-center cardForm">
+            <form action="/procesar-formulario2" method="POST">
+
+              <div class="form-group mb-3">
+
+                <label for="fecha">Fecha</label>
+                <input type="date" name="fech" id="fech" class="form-control" />
+              </div>
+
+              <script>
+                document.addEventListener('DOMContentLoaded', (event) => {
+                    const dateInput = document.getElementById('fech');
+                    const fechaCortaSpan = document.getElementById('fecha-corta');
+        
+                    dateInput.addEventListener('change', () => {
+                        const dateValue = new Date(dateInput.value);
+        
+                        // Formatear la fecha en formato corto
+                        const shortDate = dateValue.toLocaleDateString('es-ES', {
+                            year: 'numeric',
+                            month: '2-digit',
+                            day: '2-digit'
+                        });
+        
+                        // Mostrar la fecha formateada
+                        fechaCortaSpan.textContent = shortDate;
+                    });
+                });
+            </script>
+
+              <div class="form-group mb-3">
+                <label for="numero">Numero de Maquina</label>
+                <input type="number" name="num" id="num" class="form-control" />
+              </div>
+              <script>
+                function mostrarIndice(event) {
+                    var options = document.getElementById('num_Ser').options;
+                    for (var i = 0; i < options.length; i++) {
+                        options[i].addEventListener('mouseover', function() {
+                            var index = this.index + 1; // +1 para convertir de índice a número de lista (1-based)
+                            alert("Maquina # : " + index);
+                        });
+                    }
+                }
+                window.onload = mostrarIndice;
+            </script>
+              
+                    <div class="form-group mb-3">
+                    <label for="numeroSerie">Numero de Serie</label>
+                <select name="num_Ser" id="num_Ser" class="form-control">
+                    <option value="5VCAZ824">5VCAZ824</option>
+                    <option value="5VCAAV69">5VCAAV69</option>
+                    <option value="5VCAAV48">5VCAAV48</option>
+                    <option value="6230405409">6230405409</option>
+                    <option value="8VCAMA35">8VCAMA35</option>
+                    <option value="6VCAEA20">6VCAEA20</option>
+                    <option value="6VCAEA18">6VCAEA18</option>
+                    <option value="8VCAJZ05">8VCAJZ05</option>
+                    <option value="9XCA4526">9XCA4526</option>
+                    <option value="6220903423">6220903423</option>
+                    <option value="7SXARV58">7SXARV58</option>
+                    <option value="7SXASY31">7SXASY31</option>
+                    <option value="7SXATL15">7SXATL15</option>
+                    <option value="7SXARV59">7SXARV59</option>
+                    <option value="6VCAEA17">6VCAEA17</option>
+                    <option value="6VCAEA19">6VCAEA19</option>
+                    <option value="6220903419">6220903419</option>
+                    <option value="8VCA1047">8VCA1047</option>
+                    <option value="5VCAAV60">5VCAAV60</option>
+                    <option value="0VSAMZ02">0VSAMZ02</option>
+                    <option value="0VSAMZ03">0VSAMZ03</option>
+                    <option value="6SXAMX89">6SXAMX89</option>
+                    <option value="9VCA2984">9VCA2984</option>
+                    <option value="5VCAAV49">5VCAAV49</option>
+                    <option value="5VCAAV64">5VCAAV64</option>
+                    <option value="8VCA1671">8VCA1671</option>
+                    <option value="6220903423">6220903423</option>
+                  </select>
+                  
+                </div>
+
+              <div class="form-group mb-4">
+                <label for="tipoMaquina">Tipo de Maquina</label>
+                <select name="tipo_Maq" id="tipo_Maq" class="form-control">
+                <option value="Fresenius 4008S">Fresenius 4008S</option>
+                <option value="Fresenius 5008 Cordiax">Fresnius 5008 Cordiax</option>
+                <option value="SWS-6000">SWS-6000</option>
+                <option value="SWS-6000A">SWS-6000A</option>
+                </select>
+              </div>
+                    <div class="form-group mb-3">
+                        <label for="novedades">Novedades/Alarmas</label>
+                        <input type="text" name="nov" id="nov" class="form-control">
+                    </div>
+                    <div class="=form-group mb-3">  
+                        <label for="observaciones">Reparacion/Observaciones</label>
+                        <input type="text" name="obser" id="obser" class="form-control">
+                    </div>
+                    <div class="form-group mb-3">
+              <label for="repuestos">Repuestos Utilizados</label>
+              <input type="text" name="repues" id="repues" class="form-control">
+            </div>
+            <div class="form-group mb-3">              
+              <label for="estado">Estado de la Máquina</label>
+              <select name="est" id="est" class="form-control">
+                  <option value="Operativo">Operativo</option>
+                  <option value="No Operativo">No Operativo</option>
+              </select>
+            </div>
+   
+              <button type="submit" class="btn btn-info btn-lg btn-block">
+                Registrar
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <%- include('../includes/scripts') %>
+  </body>
+</html>

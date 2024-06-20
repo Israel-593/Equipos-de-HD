@@ -1,0 +1,32 @@
+<header class="header">
+  <a href="./" class="logo">
+    <img src="public/imgs/reyna.jfif" alt="Logo" />
+  </a>
+  <input class="menu-btn" type="checkbox" id="menu-btn" />
+  <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+  <ul class="menu">
+    <li>
+      <a class="menu-item <%= rutaActual === '/' ? 'active' : '' %>" 
+        href="/">
+        <i class="bi bi-floppy"></i>
+        Inicio</a
+      >
+    </li>
+    <li>
+      <a
+        class="menu-item <%= rutaActual === '/form-mantenimiento' ? 'active' : '' %>"
+        href="/form-mantenimiento">
+        <i class="bi bi-clipboard-check"></i>
+        Registrar mantenimiento</a
+      >
+    </li>
+    <li>
+      <a
+        class="menu-item <%= rutaActual === '/form-registros' ? 'active' : '' %>"
+        href="/form-registros">
+        <i class="bi bi-floppy"></i>
+        Registros Ingresados</a
+      >
+    </li>
+  </ul>
+</header>

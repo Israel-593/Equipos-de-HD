@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REGISTRO DE MANTENIMIENTO DE MAQUINAS DE HD Y HDF</title>
+     <!-- Referencia a Tailwind CSS -->
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+    <!-- Responsive Extension Datatables CSS -->
+    <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body class="bg-gray-100 text-gray-900 tracking-wider leading-normal">
+    <div>
+        <div class="bg-blue-400 bg-opacity-100 text-gray-100 text-center">
+            <p class="text-xl">REGISTRO DE MANTENIMIENTO DE MAQUINAS DE HD Y HDF</p>
+            <button onclick="location.href='/'" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex items-center">
+                Inicio
+            </button>
+        </div>
+        <div id="recipients" class="p-4 mt-6 lg:mt-0 rounded shadow bg-white overflow-x-auto">
+            <table id="equipos" class="stripe hover" style="width:100%;">
+                <thead>
+                    <tr class="bg-indigo-400 bg-opacity-100 text-white">
+                        <th data-priority="1">ID</th>
+                        <th data-priority="2">Fecha</th> 
+                        <th data-priority="3">Numero de Maquina</th>
+                        <th data-priority="4">Numero de Serie</th>
+                        <th data-priority="5">Tipo de Maquina</th>
+                        <th data-priority="6">Novedades/Alarmas</th>
+                        <th data-priority="7">Reparaciones</th>
+                        <th data-priority="8">Repuestos Utilizados</th>
+                        <th data-priority="9">Estado de la Máquina</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- DataTables -->
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <!-- Responsive Extension Datatables -->
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            const url = 'http://localhost:3000/api/equipos';
+            $('#equipos').DataTable({
+                ajax: {
+                    url: url,
+                    dataSrc: ''
+                },
+                columns: [
+                    { data: "id" },
+                    { data: "fecha"},
+                    { data: "numero_maquina" },
+                    { data: "numero_serie" },
+                    { data: "tipo_maquina" },
+                    { data: "novedades"},
+                    { data: "observaciones"},
+                    { data: "repuestos"},
+                    { data: "estado"},
+                ],
+                 responsive: true,
+            }) .columns.adjust().responsive.recalc();
+        });
+    </script>
+</body>
+</html>
